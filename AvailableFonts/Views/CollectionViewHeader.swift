@@ -16,8 +16,22 @@ class CollectionViewHeader: UICollectionReusableView {
     let view = UITextView()
     view.backgroundColor = .purple
     view.textColor = UIColor.white
+//    view.shadowColor = UIColor.lightGray
+//    view.shadowOffset = CGSize(width: 0.8, height: 0.8)
     view.isEditable = false
     view.isSelectable = true
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
+  let counterLabel: UILabel = {
+    let view = UILabel()
+    view.backgroundColor = .purple
+    view.textColor = UIColor.white
+//    view.shadowColor = UIColor.lightGray
+//    view.shadowOffset = CGSize(width: 0.8, height: 0.8)
+    view.textAlignment = .right
+    view.adjustsFontSizeToFitWidth = true
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
@@ -33,12 +47,20 @@ class CollectionViewHeader: UICollectionReusableView {
   
   private func layoutViews() {
     addSubview(label)
+    addSubview(counterLabel)
     
     NSLayoutConstraint.activate([
       label.leadingAnchor.constraint(equalTo: leadingAnchor),
       label.topAnchor.constraint(equalTo: topAnchor),
       label.widthAnchor.constraint(equalTo: widthAnchor),
       label.heightAnchor.constraint(equalTo: heightAnchor)
+      ])
+    
+    NSLayoutConstraint.activate([
+      counterLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+      counterLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+      counterLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.28),
+      counterLabel.heightAnchor.constraint(equalTo: heightAnchor)
       ])
   }
 }

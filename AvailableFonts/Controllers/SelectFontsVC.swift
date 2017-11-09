@@ -82,6 +82,9 @@ extension SelectFontsVC: UICollectionViewDelegateFlowLayout {
     view.label.text = datasource.availableFontNames[indexPath.section]
     view.label.font = UIFont(name: datasource.availableFontNames[indexPath.section], size: 25)
     
+    view.counterLabel.text = "\(indexPath.section + 1) of \(datasource.availableFontNames.count)"
+    view.counterLabel.font = view.label.font
+    
     return view
   }
   
