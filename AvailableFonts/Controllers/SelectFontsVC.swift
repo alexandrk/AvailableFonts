@@ -30,6 +30,7 @@ class SelectFontsVC: UIViewController {
     super.viewDidLoad()
 
     collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.cellIdentifier)
+    collection.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CollectionViewHeader.supplimentaryViewIdentifier)
     
     layoutViews()
   }
@@ -69,6 +70,23 @@ extension SelectFontsVC: UICollectionViewDataSource {
   
 }
 
-extension SelectFontsVC: UICollectionViewDelegate {
+extension SelectFontsVC: UICollectionViewDelegateFlowLayout {
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CollectionViewHeader.supplimentaryViewIdentifier, for: indexPath) as! CollectionViewHeader
+    
+    view.label.text = datasource.availableFontNames[indexPath.section]
+    view.label.font = UIFont(name: datasource.availableFontNames[indexPath.section], size: 25)
+    
+    return view
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    return CGSize(width: self.view.frame.width, height: 50)
+  }
   
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		117AC4EC1FB3F25D0031CE21 /* CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117AC4EB1FB3F25D0031CE21 /* CollectionViewHeader.swift */; };
 		1189E6571FAA4DA600A75B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189E6561FAA4DA600A75B7E /* AppDelegate.swift */; };
 		1189E6591FAA4DA600A75B7E /* SelectFontsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1189E6581FAA4DA600A75B7E /* SelectFontsVC.swift */; };
 		1189E65E1FAA4DA600A75B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1189E65D1FAA4DA600A75B7E /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		117AC4EB1FB3F25D0031CE21 /* CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewHeader.swift; path = "/Users/alexander/code/udacity/ios-nanodegree/Practice/AvailableFonts/AvailableFonts/Views/CollectionViewHeader.swift"; sourceTree = "<absolute>"; };
 		1189E6531FAA4DA600A75B7E /* AvailableFonts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AvailableFonts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1189E6561FAA4DA600A75B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1189E6581FAA4DA600A75B7E /* SelectFontsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFontsVC.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				1189E6681FAA4FFC00A75B7E /* CollectionViewCell.swift */,
+				117AC4EB1FB3F25D0031CE21 /* CollectionViewHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1189E6591FAA4DA600A75B7E /* SelectFontsVC.swift in Sources */,
+				117AC4EC1FB3F25D0031CE21 /* CollectionViewHeader.swift in Sources */,
 				1189E6571FAA4DA600A75B7E /* AppDelegate.swift in Sources */,
 				1189E66B1FAA540000A75B7E /* Datasource.swift in Sources */,
 				1189E6691FAA4FFC00A75B7E /* CollectionViewCell.swift in Sources */,
