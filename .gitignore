@@ -1,0 +1,7 @@
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+Wordlie/OutOfSourceControl.swift
+Podfile.lock
+Text-To-Speech.playground
+Pods/*
