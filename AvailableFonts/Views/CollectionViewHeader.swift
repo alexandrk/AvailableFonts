@@ -16,8 +16,6 @@ class CollectionViewHeader: UICollectionReusableView {
     let view = UITextView()
     view.backgroundColor = .purple
     view.textColor = UIColor.white
-//    view.shadowColor = UIColor.lightGray
-//    view.shadowOffset = CGSize(width: 0.8, height: 0.8)
     view.isEditable = false
     view.isSelectable = true
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -28,11 +26,18 @@ class CollectionViewHeader: UICollectionReusableView {
     let view = UILabel()
     view.backgroundColor = .purple
     view.textColor = UIColor.white
-//    view.shadowColor = UIColor.lightGray
-//    view.shadowOffset = CGSize(width: 0.8, height: 0.8)
     view.textAlignment = .right
     view.adjustsFontSizeToFitWidth = true
     view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
+  let starButton: UIButton = {
+    let view = UIButton()
+    //view.setBackgroundImage(#imageLiteral(resourceName: "starIconEmpty"), for: .normal)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+    
     return view
   }()
   
@@ -45,9 +50,25 @@ class CollectionViewHeader: UICollectionReusableView {
     fatalError("init(coder:) has not been implemented")
   }
   
+  //Action
+  @objc private func buttonClicked() {
+    
+    // Save selected fond to array of selected fonts
+    if let index = Datasource.selectedFontNames.index(of: label.text) {
+      Datasource.selectedFontNames.remove(at: index)
+      starButton.setBackgroundImage(#imageLiteral(resourceName: "starIconEmpty"), for: .normal)
+    }
+    else {
+      Datasource.selectedFontNames.append(label.text)
+      starButton.setBackgroundImage(#imageLiteral(resourceName: "starIcon"), for: .normal)
+    }
+    print(Datasource.selectedFontNames)
+  }
+  
   private func layoutViews() {
     addSubview(label)
     addSubview(counterLabel)
+    addSubview(starButton)
     
     NSLayoutConstraint.activate([
       label.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -57,10 +78,19 @@ class CollectionViewHeader: UICollectionReusableView {
       ])
     
     NSLayoutConstraint.activate([
-      counterLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+      counterLabel.trailingAnchor.constraint(equalTo: starButton.leadingAnchor, constant: -10),
       counterLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
       counterLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.28),
       counterLabel.heightAnchor.constraint(equalTo: heightAnchor)
       ])
+    
+    NSLayoutConstraint.activate([
+      starButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+      starButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+      starButton.widthAnchor.constraint(equalToConstant: bounds.height - 20),
+      starButton.heightAnchor.constraint(equalToConstant: bounds.height - 20)
+      ])
+    
   }
+  
 }

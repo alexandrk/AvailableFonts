@@ -11,7 +11,7 @@ import UIKit
 class SelectFontsVC: UIViewController {
 
   fileprivate let datasource = Datasource()
-  
+  var reloaded = false
   private lazy var collection: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.sectionHeadersPinToVisibleBounds = true
@@ -79,11 +79,20 @@ extension SelectFontsVC: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CollectionViewHeader.supplimentaryViewIdentifier, for: indexPath) as! CollectionViewHeader
     
-    view.label.text = datasource.availableFontNames[indexPath.section]
+    let fontName = datasource.availableFontNames[indexPath.section]
+    view.label.text = fontName
     view.label.font = UIFont(name: datasource.availableFontNames[indexPath.section], size: 25)
     
     view.counterLabel.text = "\(indexPath.section + 1) of \(datasource.availableFontNames.count)"
     view.counterLabel.font = view.label.font
+    
+    if let _ = Datasource.selectedFontNames.index(of: fontName) {
+      view.starButton.setBackgroundImage(#imageLiteral(resourceName: "starIcon"), for: .normal)
+    }
+    else {
+      view.starButton.setBackgroundImage(#imageLiteral(resourceName: "starIconEmpty"), for: .normal)
+    }
+    
     
     return view
   }
@@ -91,5 +100,4 @@ extension SelectFontsVC: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
     return CGSize(width: self.view.frame.width, height: 50)
   }
-  
 }

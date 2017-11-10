@@ -11,9 +11,10 @@ import UIKit
 class Datasource: NSObject {
   
   let availableFontNames: [String]!
+  static var selectedFontNames = [String]()
   
   let arrayOfText: [String] = {
-    let text = "0123456789aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ"
+    let text = "0123456789aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ" //
     let array = Array(text.map { String($0) })
     return array
   }()
@@ -25,6 +26,5 @@ class Datasource: NSObject {
     }
     availableFontNames = arr
   }
-  
   
 }
